@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+/* Enable dark mode with class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===============================
+   THEME VARIABLES (Tailwind v4)
+=============================== */
+@layer base {
+  :root {
+    --background: 248 250 252; /* slate-50 */
+    --surface: 255 255 255; /* white */
+    --foreground: 15 23 42; /* slate-900 */
+    --muted: 100 116 139; /* slate-500 */
+    --border: 226 232 240; /* slate-200 */
+    
+    /* New semantic colors */
+    --success: 34 197 94; /* green-500 */
+    --success-light: 220 252 231; /* green-100 */
+    --error: 239 68 68; /* red-500 */
+    --error-light: 254 226 226; /* red-100 */
+    --warning: 245 158 11; /* amber-500 */
+    --warning-light: 254 243 199; /* amber-100 */
+    --info: 59 130 246; /* blue-500 */
+    --info-light: 219 234 254; /* blue-100 */
+    
+    /* Primary brand color */
+    --primary: 79 70 229; /* indigo-600 */
+    --primary-hover: 67 56 202; /* indigo-700 */
+    --primary-light: 224 231 255; /* indigo-100 */
+  }
+
+  .dark {
+    --background: 15 23 42; /* slate-900 */
+    --surface: 30 41 59; /* slate-800 */
+    --foreground: 248 250 252; /* slate-50 */
+    --muted: 148 163 184; /* slate-400 */
+    --border: 51 65 85; /* slate-700 */
+    
+    /* Dark mode semantic colors */
+    --success: 74 222 128; /* green-400 */
+    --success-light: 20 83 45; /* green-900 */
+    --error: 248 113 113; /* red-400 */
+    --error-light: 127 29 29; /* red-900 */
+    --warning: 251 191 36; /* amber-400 */
+    --warning-light: 120 53 15; /* amber-900 */
+    --info: 96 165 250; /* blue-400 */
+    --info-light: 30 58 138; /* blue-900 */
+    
+    --primary: 129 140 248; /* indigo-400 */
+    --primary-hover: 165 180 252; /* indigo-300 */
+    --primary-light: 49 46 129; /* indigo-900 */
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ===============================
+   COMPONENT TOKENS
+=============================== */
+@layer components {
+  .surface {
+    background-color: rgb(var(--surface));
+    color: rgb(var(--foreground));
+    border-color: rgb(var(--border));
+  }
+
+  .card {
+    background-color: rgb(var(--surface));
+    color: rgb(var(--foreground));
+    border: 1px solid rgb(var(--border));
+    @apply rounded-2xl shadow-lg;
+  }
+
+  /* Form input states */
+  .input-base {
+    @apply w-full px-4 py-3 rounded-xl transition-all duration-200;
+    background-color: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--foreground));
+  }
+
+  .input-base:focus {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.1);
+  }
+
+  .input-error {
+    border-color: rgb(var(--error)) !important;
+    box-shadow: 0 0 0 3px rgb(var(--error) / 0.1) !important;
+  }
+
+  .input-success {
+    border-color: rgb(var(--success)) !important;
+    box-shadow: 0 0 0 3px rgb(var(--success) / 0.1) !important;
+  }
+
+  /* Button variants */
+  .btn {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200 inline-flex items-center justify-center gap-2;
+  }
+
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .btn-primary {
+    background-color: rgb(var(--primary));
+    color: white;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: rgb(var(--primary-hover));
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background-color: rgb(var(--surface));
+    color: rgb(var(--foreground));
+    border: 1px solid rgb(var(--border));
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: rgb(var(--background));
+  }
+
+  /* Skeleton animation */
+  .skeleton {
+    @apply animate-pulse rounded;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--border)) 25%,
+      rgb(var(--surface)) 50%,
+      rgb(var(--border)) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Filter chips */
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200;
+    background-color: rgb(var(--primary-light));
+    color: rgb(var(--primary));
+  }
+
+  .chip-removable:hover {
+    @apply opacity-80;
+  }
+}
+
+/* ===============================
+   UTILITIES
+=============================== */
+@layer utilities {
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+
+  .text-muted {
+    color: rgb(var(--muted));
+  }
+
+  .text-success {
+    color: rgb(var(--success));
+  }
+
+  .text-error {
+    color: rgb(var(--error));
+  }
+
+  .text-warning {
+    color: rgb(var(--warning));
+  }
+
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+
+  .bg-surface {
+    background-color: rgb(var(--surface));
+  }
+
+  .bg-success-light {
+    background-color: rgb(var(--success-light));
+  }
+
+  .bg-error-light {
+    background-color: rgb(var(--error-light));
+  }
+
+  .bg-warning-light {
+    background-color: rgb(var(--warning-light));
+  }
+
+  .bg-primary-light {
+    background-color: rgb(var(--primary-light));
+  }
+
+  .border-default {
+    border-color: rgb(var(--border));
+  }
+
+  .border-success {
+    border-color: rgb(var(--success));
+  }
+
+  .border-error {
+    border-color: rgb(var(--error));
+  }
+
+  /* Icon sizes */
+  .icon-sm {
+    @apply w-4 h-4;
+  }
+
+  .icon-md {
+    @apply w-5 h-5;
+  }
+
+  .icon-lg {
+    @apply w-6 h-6;
+  }
+
+  .icon-xl {
+    @apply w-8 h-8;
+  }
+
+  /* Focus visible ring */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --tw-ring-color: rgb(var(--primary));
+  }
+}
