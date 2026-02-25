@@ -1,16 +1,35 @@
-# React + Vite
+Prashikshan – Frontend
+Prashikshan is a modern web-based training and collaboration platform designed to streamline structured learning, group coordination, and performance tracking.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Tech Stack
+React 19 (JSX)
+Tailwind CSS v4
+React Router DOM
+Axios
+Framer Motion
+Vite (Build Tool)
+Deployed on Vercel
 
-Currently, two official plugins are available:
+🛡️ Features
+Authentication – JWT-based secure login and registration
+Group Management – Create and manage learning groups
+Dashboard Interface – Clean and intuitive user dashboard
+Responsive UI – Mobile-first design with Tailwind CSS v4
+Secure API Communication – Axios-based REST API integration
+Modern Routing – React Router DOM for seamless navigation
+Smooth Animations – Framer Motion for enhanced UX
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📦 Deployment
+This application is deployed using Vercel.
 
-## React Compiler
+Production URL: https://prashikshan-frontend.netlify.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📌 Future Enhancements
+Real-time messaging
+Role-based access control (RBAC)
+AI-powered learning insights
+Performance analytics dashboard
+Multi-tenant SaaS architecture
+👨‍💻 Author
+Darshil
+BCA Student | Building production-grade SaaS systems
