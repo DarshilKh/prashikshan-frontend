@@ -20,7 +20,7 @@ Modern Routing – React Router DOM for seamless navigation
 Smooth Animations – Framer Motion for enhanced UX
 
 📦 Deployment
-This application is deployed using Vercel.
+This application is deployed using Netlify.
 
 Production URL: https://prashikshan-frontend.netlify.app/
 
